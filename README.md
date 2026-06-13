@@ -1,184 +1,463 @@
-# Brocus Solution — Full-Stack E-Commerce Platform
+# Brocus Solution – Full Stack E-Commerce Platform
 
-Brocus Solution is a production-ready, highly interactive, and premium SaaS-style full-stack e-commerce application. It features real-time search, category filtering, a secure purchase flow, product management (CRUD), and animated modal interactions powered by Framer Motion.
+## Live Demo
+
+### Frontend (Vercel)
+
+https://brocus.vercel.app/
+
+### Backend API (Render)
+
+https://brocus-backend.onrender.com/
+
+### Source Code (GitHub)
+
+https://github.com/rohanvarankar/brocus
 
 ---
 
-## Folder Structure
+# Project Overview
+
+Brocus Solution is a production-ready full-stack e-commerce application developed as part of a Full Stack Developer assessment.
+
+The application provides:
+
+* User Authentication
+* Role-Based Access Control
+* Product Management
+* Cart Management
+* Checkout Process
+* Order Management
+* Admin Dashboard
+* Search & Filtering
+* Responsive Design
+* Secure REST APIs
+
+The project follows a modern client-server architecture using Next.js, Express.js, MongoDB Atlas, JWT Authentication, and cloud deployment services.
+
+---
+
+# Tech Stack
+
+## Frontend
+
+* Next.js 16
+* React 19
+* TypeScript
+* Tailwind CSS
+* Axios
+* Framer Motion
+* React Hook Form
+* React Hot Toast
+
+## Backend
+
+* Node.js
+* Express.js
+* MongoDB Atlas
+* Mongoose
+* JWT Authentication
+* bcryptjs
+* Helmet
+* Express Rate Limit
+* CORS
+
+## Deployment & DevOps
+
+### Frontend Hosting
+
+* Vercel
+
+### Backend Hosting
+
+* Render
+
+### Database
+
+* MongoDB Atlas
+
+### Repository Hosting
+
+* GitHub
+
+### Backend Uptime Monitoring
+
+* Uptime Robot
+
+### Development Environment
+
+* Visual Studio Code (VS Code)
+
+---
+
+# Project Structure
 
 ```text
-brocussolution/
-├── backend/
+brocus/
+│
+├── frontend/
 │   ├── src/
-│   │   ├── config/
-│   │   │   └── db.js
-│   │   ├── controllers/
-│   │   │   ├── authController.js
-│   │   │   ├── productController.js
-│   │   │   └── orderController.js
-│   │   ├── middleware/
-│   │   │   ├── authMiddleware.js
-│   │   │   └── errorMiddleware.js
-│   │   ├── models/
-│   │   │   ├── User.js
-│   │   │   ├── Product.js
-│   │   │   └── Order.js
-│   │   ├── routes/
-│   │   │   ├── authRoutes.js
-│   │   │   ├── productRoutes.js
-│   │   │   └── orderRoutes.js
-│   │   ├── app.js
-│   │   └── server.js
-│   ├── .env
-│   ├── .env.example
+│   │   ├── app/
+│   │   ├── components/
+│   │   ├── context/
+│   │   ├── hooks/
+│   │   ├── services/
+│   │   ├── types/
+│   │   └── utils/
+│   │
+│   ├── public/
+│   ├── package.json
+│   ├── next.config.ts
+│   └── tsconfig.json
+│
+├── backend/
+│   ├── config/
+│   ├── controllers/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   ├── app.js
+│   ├── server.js
 │   └── package.json
-└── frontend/
-    ├── src/
-    │   ├── app/
-    │   │   ├── orders/
-    │   │   │   └── page.tsx
-    │   │   ├── globals.css
-    │   │   ├── layout.tsx
-    │   │   └── page.tsx
-    │   ├── components/
-    │   │   ├── AuthModal.tsx
-    │   │   ├── EmptyState.tsx
-    │   │   ├── Navbar.tsx
-    │   │   ├── ProductCard.tsx
-    │   │   ├── ProductModal.tsx
-    │   │   └── SkeletonCard.tsx
-    │   ├── context/
-    │   │   └── AuthContext.tsx
-    │   ├── hooks/
-    │   │   └── useAuth.ts
-    │   ├── services/
-    │   │   ├── api.ts
-    │   │   ├── authService.ts
-    │   │   ├── productService.ts
-    │   │   └── orderService.ts
-    │   └── types/
-    │       └── index.ts
-    ├── .env.local
-    ├── .env.local.example
-    ├── next.config.ts
-    └── package.json
+│
+├── README.md
+└── .gitignore
 ```
 
 ---
 
-## Tech Stack
+# Assignment Features
 
-| Domain | Technology | Details |
-|---|---|---|
-| **Frontend** | Next.js 15 (App Router) | High-performance React framework with SSR capabilities |
-| | Tailwind CSS v4 | Curated sleek Slate theme variables with glassmorphism |
-| | React Hook Form | Dynamic client-side input validations |
-| | React Hot Toast | Real-time elegant action alert popups |
-| | Framer Motion | Fluid hardware-accelerated animations & page entries |
-| | Axios | Centralized client instance with automatic JWT interceptors |
-| **Backend** | Node.js & Express.js | Secure REST API backend |
-| | MongoDB Atlas & Mongoose | Flexible NoSQL document database schema validation |
-| | JSON Web Tokens (JWT) | Safe stateless token auth authorization |
-| | bcryptjs | Robust password cryptography hashing |
+## Authentication
+
+* User Registration
+* User Login
+* Password Hashing using bcryptjs
+* JWT Authentication
+* Protected Routes
+* Protected APIs
+* Logout Functionality
 
 ---
 
-## Environment Variables
+## User Features
 
-### Backend (`backend/.env`)
-Create a file named `.env` in the `backend/` folder:
+Users can:
+
+* Browse Products
+* Search Products
+* Filter Products
+* Add Products to Cart
+* Update Cart Quantity
+* Remove Products from Cart
+* Clear Cart
+* Checkout Orders
+* View Order History
+* Track Order Status
+
+Users cannot:
+
+* Create Products
+* Edit Products
+* Delete Products
+* Access Admin Dashboard
+
+---
+
+## Admin Features
+
+Admins can:
+
+* Access Admin Dashboard
+* Create Products
+* Edit Products
+* Delete Products
+* View Orders
+* Update Order Status
+
+Admins cannot:
+
+* Add Products to Cart
+* Checkout Products
+* Purchase Products
+
+---
+
+# Product Search & Filtering
+
+Implemented Features:
+
+* Real-Time Search
+* Dynamic Categories
+* Price Filtering
+* Stock Availability Filtering
+* Pagination
+
+---
+
+# Cart Workflow
+
+```text
+Browse Products
+       ↓
+Add To Cart
+       ↓
+Update Cart
+       ↓
+Checkout
+       ↓
+Create Order
+       ↓
+Track Order Status
+```
+
+---
+
+# Order Management
+
+Supported Order Statuses:
+
+* Pending
+* Processing
+* Shipped
+* Delivered
+* Cancelled
+
+Admins can update order status.
+
+Users can view the latest order status in real time.
+
+---
+
+# Role-Based Access Control (RBAC)
+
+The application implements secure role-based authorization.
+
+```text
+User
+ ├── Products
+ ├── Cart
+ ├── Checkout
+ └── Orders
+
+Admin
+ ├── Dashboard
+ ├── Product CRUD
+ ├── Order Management
+ └── Status Updates
+```
+
+All sensitive operations are protected both on:
+
+* Frontend
+* Backend APIs
+
+Unauthorized actions return:
+
+```http
+403 Forbidden
+```
+
+---
+
+# Test Credentials
+
+## User Account
+
+Email:
+
+```text
+testuser1@gmail.com
+```
+
+Password:
+
+```text
+Test@123
+```
+
+---
+
+## Admin Account
+
+Email:
+
+```text
+admin@brocus.com
+```
+
+Password:
+
+```text
+Admin123
+```
+
+---
+
+# How To Use
+
+## User Flow
+
+### Step 1
+
+Open:
+
+https://brocus.vercel.app/
+
+### Step 2
+
+Login using User credentials.
+
+### Step 3
+
+Browse products.
+
+### Step 4
+
+Use search and filters.
+
+### Step 5
+
+Add products to cart.
+
+### Step 6
+
+Proceed to checkout.
+
+### Step 7
+
+View order history and status.
+
+---
+
+## Admin Flow
+
+### Step 1
+
+Login using Admin credentials.
+
+### Step 2
+
+Access Admin Dashboard.
+
+### Step 3
+
+Create new products.
+
+### Step 4
+
+Update product details.
+
+### Step 5
+
+Delete products.
+
+### Step 6
+
+View customer orders.
+
+### Step 7
+
+Update order statuses.
+
+---
+
+# API Security
+
+Implemented Security Features:
+
+* JWT Authentication
+* Password Hashing (bcryptjs)
+* Protected Routes
+* Protected APIs
+* Role-Based Authorization
+* Helmet Security Headers
+* Rate Limiting
+* Input Validation
+* Environment Variables
+
+---
+
+# Local Development Setup
+
+## Clone Repository
+
+```bash
+git clone https://github.com/rohanvarankar/brocus.git
+```
+
+## Backend
+
+```bash
+cd backend
+npm install
+npm run dev
+```
+
+## Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+---
+
+# Environment Variables
+
+## Backend
+
 ```env
 PORT=5000
-MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/brocus?retryWrites=true&w=majority
-JWT_SECRET=supersecretjwtkeychangeinproduction
+MONGODB_URI=your_mongodb_uri
+JWT_SECRET=your_jwt_secret
+FRONTEND_URL=http://localhost:3000
 ```
 
-### Frontend (`frontend/.env.local`)
-Create a file named `.env.local` in the `frontend/` folder:
+## Frontend
+
 ```env
-NEXT_PUBLIC_API_URL=http://localhost:5000
+NEXT_PUBLIC_API_URL=http://localhost:5000/api
 ```
 
 ---
 
-## API Documentation
+# Deployment Architecture
 
-### 1. Authentication
-* **`POST /api/auth/signup`** (Public)
-  * Request Body: `{ "name", "email", "password" }`
-  * Action: Registers user and returns token.
-* **`POST /api/auth/login`** (Public)
-  * Request Body: `{ "email", "password" }`
-  * Action: Authenticates credentials and returns token.
-* **`GET /api/me`** (Private)
-  * Headers: `Authorization: Bearer <token>`
-  * Action: Returns current user's profile details.
-
-### 2. Products
-* **`GET /api/products`** (Public)
-  * Optional Query Params: `search` (filter by title regex), `category`
-  * Action: Returns array of matching products.
-* **`GET /api/products/:id`** (Public)
-  * Action: Returns single product details by ID.
-* **`POST /api/products`** (Private)
-  * Request Body: `{ "title", "description", "imageUrl", "price", "category", "stock" }`
-  * Action: Publishes a new product.
-* **`PUT /api/products/:id`** (Private)
-  * Request Body: Update fields (e.g. `{ "price", "stock" }`)
-  * Action: Modifies product properties by ID.
-* **`DELETE /api/products/:id`** (Private)
-  * Action: Deletes product by ID.
-
-### 3. Orders
-* **`POST /api/purchase`** (Private)
-  * Request Body: `{ "productId", "quantity" }`
-  * Action: Processes purchase transaction, decrements product stock, saves order log.
-* **`GET /api/orders/my-orders`** (Private)
-  * Action: Returns chronological purchase log list of the authenticated user.
+```text
+User Browser
+      │
+      ▼
+Frontend (Vercel)
+https://brocus.vercel.app
+      │
+      ▼
+Backend API (Render)
+https://brocus-backend.onrender.com
+      │
+      ▼
+MongoDB Atlas
+```
 
 ---
 
-## Installation & Running Locally
+# Notes
 
-### Prerequisites
-- Node.js installed (v18+)
-- MongoDB daemon running locally (`mongodb://127.0.0.1:27017/brocus`) OR MongoDB Atlas URI
-
-### Steps
-1. **Clone the Repository**
-2. **Boot the Backend Server**
-   ```bash
-   cd backend
-   npm install
-   npm run dev
-   ```
-   *The backend server will run on `http://localhost:5000`.*
-3. **Boot the Frontend Client**
-   ```bash
-   cd ../frontend
-   npm install
-   npm run dev
-   ```
-   *The Next.js client will run on `http://localhost:3000`.*
+* Backend is hosted on Render Free Tier.
+* Uptime Robot is used to keep the backend awake and reduce cold starts.
+* Frontend is deployed on Vercel.
+* MongoDB Atlas is used as the cloud database.
+* GitHub is used for source code management and version control.
+* VS Code was used for development.
 
 ---
 
-## Deployment Guide
+# Author
 
-### Database: MongoDB Atlas
-1. Create a free shared cluster.
-2. Under Network Access, allow access from `0.0.0.0/0` (or Vercel/Railway IP ranges).
-3. Obtain your Database URI connection string and use it as `MONGODB_URI`.
+Rohan Varankar
 
-### Backend: Railway
-1. Sign in to Railway and create a new project.
-2. Select **Deploy from GitHub repo** and point to your project backend folder/repo.
-3. In Project settings, add environmental variables: `PORT=5000`, `MONGODB_URI`, `JWT_SECRET`.
-4. Railway will automatically deploy and expose a public domain (e.g., `https://brocus-backend.up.railway.app`).
+Full Stack Developer
 
-### Frontend: Vercel
-1. Sign in to Vercel and click **Add New Project**.
-2. Select your repository. Set root directory to `frontend/`.
-3. In settings, configure environment variable:
-   - `NEXT_PUBLIC_API_URL` = your Railway backend URL (e.g. `https://brocus-backend.up.railway.app`).
-4. Click **Deploy**. Vercel exposes your premium storefront.
+Tech Stack:
+React • Next.js • Node.js • Express.js • MongoDB • TypeScript
