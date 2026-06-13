@@ -16,30 +16,38 @@ const app = express();
 // Security Headers
 app.use(helmet());
 
+// CORS - TEMPORARY INTERVIEW FIX
+app.use(
+  cors({
+    origin: true,
+    credentials: true,
+  })
+);
+
 // Rate Limiting for Auth
 const authLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 20, // limit each IP to 20 requests per windowMs
-  message: { success: false, message: 'Too many authentication attempts, please try again later.' }
+  windowMs: 15 * 60 * 1000,
+  max: 20,
+  message: {
+    success: false,
+    message: 'Too many authentication attempts, please try again later.',
+  },
 });
 
-// Middleware
-app.use(cors({
-  origin: process.env.NODE_ENV === 'production' 
-    ? [process.env.FRONTEND_URL] // Must configure FRONTEND_URL in Render
-    : ['http://localhost:3000', 'http://localhost:3001'],
-  credentials: true,
-}));
+// Body Parsers
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Test route
+// Health Check Route
 app.get('/', (req, res) => {
-  res.json({ message: 'Brocus Solution API is running...' });
+  res.json({
+    success: true,
+    message: 'Brocus Solution API is running...',
+  });
 });
 
-// Mount routes
-app.use('/api/auth', authLimiter); // Apply limiter specifically to /api/auth prefix
+// Routes
+app.use('/api/auth', authLimiter);
 app.use('/api', authRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/cart', cartRoutes);
