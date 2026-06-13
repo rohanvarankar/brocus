@@ -6,6 +6,7 @@ const productSchema = new mongoose.Schema(
       type: String,
       required: [true, 'Please provide a product title'],
       trim: true,
+      index: true,
     },
     description: {
       type: String,
@@ -26,6 +27,7 @@ const productSchema = new mongoose.Schema(
       type: String,
       required: [true, 'Please provide a product category'],
       trim: true,
+      index: true,
     },
     stock: {
       type: Number,

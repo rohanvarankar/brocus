@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode, useMemo, useCallback } from 'react';
 import { User } from '../types';
 import { authService } from '../services/authService';
 
@@ -20,7 +20,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [token, setToken] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
-  const checkAuth = async () => {
+  const checkAuth = useCallback(async () => {
     setLoading(true);
     const storedToken = localStorage.getItem('token');
     if (storedToken) {
@@ -36,35 +36,35 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       }
     }
     setLoading(false);
-  };
+  }, []);
 
   useEffect(() => {
     checkAuth();
-  }, []);
+  }, [checkAuth]);
 
-  const login = (data: { user: User; token: string }) => {
+  const login = useCallback((data: { user: User; token: string }) => {
     localStorage.setItem('token', data.token);
     setToken(data.token);
     setUser(data.user);
-  };
+  }, []);
 
-  const logout = () => {
+  const logout = useCallback(() => {
     localStorage.removeItem('token');
     setToken(null);
     setUser(null);
-  };
+  }, []);
+
+  const contextValue = useMemo(() => ({
+    user,
+    token,
+    login,
+    logout,
+    loading,
+    checkAuth,
+  }), [user, token, login, logout, loading, checkAuth]);
 
   return (
-    <AuthContext.Provider
-      value={{
-        user,
-        token,
-        login,
-        logout,
-        loading,
-        checkAuth,
-      }}
-    >
+    <AuthContext.Provider value={contextValue}>
       {children}
     </AuthContext.Provider>
   );

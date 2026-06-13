@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { ShieldCheck, Zap, Star, Laptop, Smartphone, Headphones, Watch, ShoppingBag } from 'lucide-react';
 
 export default function HeroSection() {
@@ -108,7 +109,7 @@ export default function HeroSection() {
 
               {/* Primary Focal Point: Premium Laptop (60% visual weight) */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] sm:w-[380px] h-[190px] sm:h-[260px] rounded-2xl overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.2)] border border-slate-100 z-20 bg-white group transition-transform duration-700 hover:scale-[1.02]">
-                <img src="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?q=80&w=800&auto=format&fit=crop" alt="Premium Laptop" className="w-full h-full object-cover" />
+                <Image src="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?q=80&w=800&auto=format&fit=crop" alt="Premium Laptop" fill className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0">
                   <span className="px-3 py-1 bg-white/90 backdrop-blur-md rounded-full text-[10px] font-bold uppercase tracking-wider text-slate-900 shadow-sm">MacBook Pro</span>
@@ -117,12 +118,12 @@ export default function HeroSection() {
 
               {/* Secondary Element: Headphones (Top Left) */}
               <div className="absolute top-[8%] sm:top-[10%] left-2 sm:left-[5%] w-[100px] sm:w-[130px] h-[100px] sm:h-[130px] rounded-2xl overflow-hidden shadow-xl border border-white z-10 bg-slate-50 transition-transform duration-700 hover:scale-105 hover:z-30">
-                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop" alt="Premium Audio" className="w-full h-full object-cover" />
+                <Image src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop" alt="Premium Audio" fill className="object-cover" />
               </div>
 
               {/* Secondary Element: Smartwatch (Bottom Right) */}
               <div className="absolute bottom-[10%] sm:bottom-[12%] right-2 sm:right-[5%] w-[110px] sm:w-[140px] h-[110px] sm:h-[140px] rounded-2xl overflow-hidden shadow-xl border border-slate-100 bg-white z-30 transition-transform duration-700 hover:scale-105">
-                <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=800&auto=format&fit=crop" alt="Smartwatch" className="w-full h-full object-cover" />
+                <Image src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=800&auto=format&fit=crop" alt="Smartwatch" fill className="object-cover" />
               </div>
 
             </motion.div>
